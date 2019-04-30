@@ -23,4 +23,3 @@
   apt:
     update_cache: yes
   when: pgdg_repo is changed or pgdg_repo_key is changed
-
