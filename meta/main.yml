@@ -26,5 +26,7 @@ galaxy_info:
     - wily
     - xenial
     - zesty
-  galaxy_tags: []
+  galaxy_tags:
+    - postgres
+    - postgresql
 dependencies: []
