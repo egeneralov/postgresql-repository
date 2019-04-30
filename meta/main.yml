@@ -18,7 +18,7 @@ galaxy_info:
     versions:
     - bionic
     - cosmic
-    - disco
+#    - disco
     - lucid
     - precise
     - saucy
