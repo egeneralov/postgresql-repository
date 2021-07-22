@@ -1,0 +1,13 @@
+---
+
+- set_fact:
+    postgresql_version_terse: "{{ pgdg_version | string }}"
+
+- name: PostgreSQL | Add PostgreSQL repository | RHEL
+  yum_repository:
+    name: postgresql
+    description: postgresql yum repo
+    baseurl: "http://yum.postgresql.org/{{ postgresql_version_terse.split('.')[0] }}/{{ ansible_os_family | lower }}/rhel-{{ ansible_distribution_major_version }}-{{ ansible_architecture }}"
+    # baseurl: "http://yum.postgresql.org/13/redhat/rhel-8-x86_64"
+    gpgkey: "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-13"
+    enabled: yes

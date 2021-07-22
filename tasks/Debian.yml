@@ -1,0 +1,24 @@
+---
+
+- name: install https transport and privacy guard tools
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+    name:
+      - apt-transport-https
+      - gnupg2
+
+- name: import postgresql repository key
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+  register: pgdg_repo_key
+
+- name: add postgresql repository
+  apt_repository:
+    repo: "deb http://apt.postgresql.org/pub/repos/apt/ {{ ansible_distribution_release }}-pgdg main"
+  register: pgdg_repo
+
+- name: update apt cache
+  apt:
+    update_cache: yes
+  when: pgdg_repo is changed or pgdg_repo_key is changed
